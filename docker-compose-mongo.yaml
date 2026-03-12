@@ -8,6 +8,8 @@ services:
         environment:
             - MONGO_INITDB_ROOT_USERNAME=admin
             - MONGO_INITDB_ROOT_PASSWORD=password
+        volumes:
+            - my-mongo-data:/data/db
     mongo-express:
         image: mongo-express
         container_name: mongo-express
@@ -20,3 +22,6 @@ services:
             - ME_CONFIG_MONGODB_SERVER=mongodb
             - ME_CONFIG_BASICAUTH_USERNAME=admin
             - ME_CONFIG_BASICAUTH_PASSWORD=pass
+volumes:
+    my-mongo-data:
+        driver: local
