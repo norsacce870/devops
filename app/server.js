@@ -11,9 +11,9 @@ app.use(bodyParser.json());
 // CONFIGURATION
 const databaseName = "my-db";
 // use when starting application locally
-const mongoUrlLocal = "mongodb://admin:password@localhost:27017";
+//const mongoUrlLocal = "mongodb://admin:password@localhost:27017";
 // use when starting application as docker container
-//const mongoUrlDocker = "mongodb://admin:password@mongodb";
+const mongoUrlDocker = "mongodb://admin:password@mongodb";
 
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
@@ -27,7 +27,7 @@ app.get('/profile-picture', (req, res) => {
 
 // GET PROFILE
 app.get('/get-profile', async (req, res) => {
-    const client = new MongoClient(mongoUrlLocal);
+    const client = new MongoClient(mongoUrlDocker);
 
     try {
         await client.connect();
@@ -47,7 +47,7 @@ app.get('/get-profile', async (req, res) => {
 // UPDATE PROFILE
 app.post('/update-profile', async (req, res) => {
     const userObj = req.body;
-    const client = new MongoClient(mongoUrlLocal);
+    const client = new MongoClient(mongoUrlDocker);
 
     try {
         await client.connect();

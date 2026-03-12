@@ -1,5 +1,10 @@
 #version: "3.9"
 services:
+    devops-user-profile:
+        image: devops-user-profile:1.1
+        container_name: user-profile-app
+        ports:
+            - "3000:3000"
     mongodb:
         image: mongo
         container_name: mongodb
