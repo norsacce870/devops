@@ -1,7 +1,7 @@
 #version: "3.9"
 services:
     devops-user-profile:
-        image: devops-user-profile:1.1
+        image: lowkey05/user-profile-app:1.0 
         container_name: user-profile-app
         ports:
             - "3000:3000"

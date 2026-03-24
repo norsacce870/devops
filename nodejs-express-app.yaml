@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nodejs-app-deployment
+  namespace: b3dev-devops
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nodejs-app
+  template:
+    metadata:
+      labels:
+        app: nodejs-app
+    spec:
+      containers:
+      - name: nodejs-app
+        image: lowkey05/user-profile-app:1.0
+        ports:
+        - containerPort: 3000
+        env:
+        - name: MONGO_URL
+          value: "mongodb://admin:password@mongodb-service:27017"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: nodejs-app-service
+  namespace: b3dev-devops
+spec:
+  selector:
+    app: nodejs-app
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000

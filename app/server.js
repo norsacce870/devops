@@ -13,9 +13,8 @@ const databaseName = "my-db";
 // use when starting application locally
 //const mongoUrlLocal = "mongodb://admin:password@localhost:27017";
 // use when starting application as docker container
-const mongoUrlDocker = "mongodb://username:password@mongodb-service"; // mongodb-service
-
-app.get('/', (req, res) => {
+const mongoUrlDocker =
+"mongodb://admin:password@mongodb";app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, "index.html"));
 });
 
